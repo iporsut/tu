@@ -1,4 +1,4 @@
-// tu provides time utility functions to easily get time before or after of specific date time
+// Package tu provides time utility functions to easily get time before or after of specific date time
 package tu
 
 import (
@@ -49,7 +49,7 @@ var EndOfYear TimeFunc = func(t time.Time) time.Time {
 	return time.Date(t.Year(), 12, 31, 23, 59, 59, 999999999, t.Location())
 }
 
-// Yeterday composes Yesterday function with f TimeFunc function
+// Yesterday composes Yesterday function with f TimeFunc function
 func (f TimeFunc) Yesterday() TimeFunc {
 	return func(t time.Time) time.Time {
 		return Yesterday(f(t))
