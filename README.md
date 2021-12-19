@@ -3,6 +3,7 @@
 tu is a time util for golang
 
 [![go report card](https://goreportcard.com/badge/github.com/iporsut/tu "go report card")](https://goreportcard.com/report/github.com/iporsut/tu)
+[![Go Reference](https://pkg.go.dev/badge/github.com/iporsut/tu.svg)](https://pkg.go.dev/github.com/iporsut/tu)
 [![MIT license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
 
 ## Install
