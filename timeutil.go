@@ -5,7 +5,6 @@ import (
 	"time"
 )
 
-// Basic Time Functions
 var (
 	// Yesterday get yesterday datetime of given datetime
 	Yesterday TimeFunc = func(t time.Time) time.Time {
