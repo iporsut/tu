@@ -5,49 +5,51 @@ import (
 	"time"
 )
 
+var (
+	// Yesterday get yesterday datetime of given datetime
+	Yesterday TimeFunc = func(t time.Time) time.Time {
+		return t.AddDate(0, 0, -1)
+	}
+
+	// Tomorrow get tomorrow datetime of given datetime
+	Tomorrow TimeFunc = func(t time.Time) time.Time {
+		return t.AddDate(0, 0, 1)
+	}
+
+	// BeginningOfDay get beginning of day of given datetime
+	BeginningOfDay TimeFunc = func(t time.Time) time.Time {
+		return time.Date(t.Year(), t.Month(), t.Day(), 0, 0, 0, 0, t.Location())
+	}
+
+	// EndOfDay get end of day of given datetime
+	EndOfDay TimeFunc = func(t time.Time) time.Time {
+		return time.Date(t.Year(), t.Month(), t.Day(), 23, 59, 59, 999999999, t.Location())
+	}
+
+	// BeginningOfMonth get beginning of month of given datetime
+	BeginningOfMonth TimeFunc = func(t time.Time) time.Time {
+		return time.Date(t.Year(), t.Month(), 1, 0, 0, 0, 0, t.Location())
+	}
+
+	// EndOfMonth get end of month of given datetime
+	EndOfMonth TimeFunc = func(t time.Time) time.Time {
+		tt := BeginningOfMonth(t.AddDate(0, 1, 0)).AddDate(0, 0, -1)
+		return time.Date(t.Year(), t.Month(), tt.Day(), 23, 59, 59, 999999999, t.Location())
+	}
+
+	// BeginningOfYear get beginning of year of given datetime
+	BeginningOfYear TimeFunc = func(t time.Time) time.Time {
+		return time.Date(t.Year(), 1, 1, 0, 0, 0, 0, t.Location())
+	}
+
+	// EndOfYear get end of year of given datetime
+	EndOfYear TimeFunc = func(t time.Time) time.Time {
+		return time.Date(t.Year(), 12, 31, 23, 59, 59, 999999999, t.Location())
+	}
+)
+
 // TimeFunc types of time utility function provides methods to compose utility functions
 type TimeFunc func(time.Time) time.Time
-
-// Yesterday get yesterday datetime of given datetime
-var Yesterday TimeFunc = func(t time.Time) time.Time {
-	return t.AddDate(0, 0, -1)
-}
-
-// Tomorrow get tomorrow datetime of given datetime
-var Tomorrow TimeFunc = func(t time.Time) time.Time {
-	return t.AddDate(0, 0, 1)
-}
-
-// BeginningOfDay get beginning of day of given datetime
-var BeginningOfDay TimeFunc = func(t time.Time) time.Time {
-	return time.Date(t.Year(), t.Month(), t.Day(), 0, 0, 0, 0, t.Location())
-}
-
-// EndOfDay get end of day of given datetime
-var EndOfDay TimeFunc = func(t time.Time) time.Time {
-	return time.Date(t.Year(), t.Month(), t.Day(), 23, 59, 59, 999999999, t.Location())
-}
-
-// BeginningOfMonth get beginning of month of given datetime
-var BeginningOfMonth TimeFunc = func(t time.Time) time.Time {
-	return time.Date(t.Year(), t.Month(), 1, 0, 0, 0, 0, t.Location())
-}
-
-// EndOfMonth get end of month of given datetime
-var EndOfMonth TimeFunc = func(t time.Time) time.Time {
-	tt := BeginningOfMonth(t.AddDate(0, 1, 0)).AddDate(0, 0, -1)
-	return time.Date(t.Year(), t.Month(), tt.Day(), 23, 59, 59, 999999999, t.Location())
-}
-
-// BeginningOfYear get beginning of year of given datetime
-var BeginningOfYear TimeFunc = func(t time.Time) time.Time {
-	return time.Date(t.Year(), 1, 1, 0, 0, 0, 0, t.Location())
-}
-
-// EndOfYear get end of year of given datetime
-var EndOfYear TimeFunc = func(t time.Time) time.Time {
-	return time.Date(t.Year(), 12, 31, 23, 59, 59, 999999999, t.Location())
-}
 
 // Yesterday composes Yesterday function with f TimeFunc function
 func (f TimeFunc) Yesterday() TimeFunc {
