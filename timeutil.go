@@ -26,6 +26,18 @@ var (
 		return time.Date(t.Year(), t.Month(), t.Day(), 23, 59, 59, 999999999, t.Location())
 	}
 
+	// BeginningOfWeek get beginning of week of given datetime
+	BeginningOfWeek TimeFunc = func(t time.Time) time.Time {
+		tt := BeginningOfDay(t).AddDate(0, 0, int(t.Weekday())*-1)
+		return time.Date(t.Year(), t.Month(), tt.Day(), 0, 0, 0, 0, t.Location())
+	}
+
+	// EndOfWeek get end of week of given datetime
+	EndOfWeek TimeFunc = func(t time.Time) time.Time {
+		tt := EndOfDay(t).AddDate(0, 0, 6-int(t.Weekday()))
+		return time.Date(t.Year(), t.Month(), tt.Day(), 23, 59, 59, 999999999, t.Location())
+	}
+
 	// BeginningOfMonth get beginning of month of given datetime
 	BeginningOfMonth TimeFunc = func(t time.Time) time.Time {
 		return time.Date(t.Year(), t.Month(), 1, 0, 0, 0, 0, t.Location())
