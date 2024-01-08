@@ -91,6 +91,20 @@ func (f TimeFunc) EndOfDay() TimeFunc {
 	}
 }
 
+// BeginningOfWeek composes BeginningOfWeek function with f TimeFunc function
+func (f TimeFunc) BeginningOfWeek() TimeFunc {
+	return func(t time.Time) time.Time {
+		return BeginningOfWeek(f(t))
+	}
+}
+
+// EndOfWeek composes EndOfWeek function with f TimeFunc function
+func (f TimeFunc) EndOfWeek() TimeFunc {
+	return func(t time.Time) time.Time {
+		return EndOfWeek(f(t))
+	}
+}
+
 // BeginningOfMonth composes BeginningOfMonth function with f TimeFunc function
 func (f TimeFunc) BeginningOfMonth() TimeFunc {
 	return func(t time.Time) time.Time {
