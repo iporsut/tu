@@ -33,7 +33,7 @@ var (
 
 	// EndOfMonth get end of month of given datetime
 	EndOfMonth TimeFunc = func(t time.Time) time.Time {
-		tt := BeginningOfMonth(t.AddDate(0, 1, 0)).AddDate(0, 0, -1)
+		tt := BeginningOfMonth(t).AddDate(0, 1, 0).AddDate(0, 0, -1)
 		return time.Date(t.Year(), t.Month(), tt.Day(), 23, 59, 59, 999999999, t.Location())
 	}
 

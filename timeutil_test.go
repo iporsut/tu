@@ -39,10 +39,12 @@ func TestTimeUtil(t *testing.T) {
 		{currentDate, tu.N(2).YearsAgo().Of, time.Date(2019, 12, 19, 20, 36, 30, 123456789, time.UTC)},
 		{currentDate, tu.N(2).YearsLater().Of, time.Date(2023, 12, 19, 20, 36, 30, 123456789, time.UTC)},
 		{currentDate, tu.N(2).DaysAgo().BeginningOfDay().Of, time.Date(2021, 12, 17, 0, 0, 0, 0, time.UTC)},
+		{time.Date(2024, 1, 30, 0, 0, 0, 0, time.UTC), tu.EndOfMonth.Of, time.Date(2024, 1, 31, 23, 59, 59, 999999999, time.UTC)},
+		{time.Date(2024, 3, 31, 0, 0, 0, 0, time.UTC), tu.EndOfMonth.Of, time.Date(2024, 3, 31, 23, 59, 59, 999999999, time.UTC)},
 	}
 	for _, tc := range testcases {
 		if r := tc.timeFunc(tc.now); r != tc.expected {
-			t.Fatalf("expect %v but got %v", tc.expected, r)
+			t.Errorf("expect %v but got %v", tc.expected, r)
 		}
 	}
 }
