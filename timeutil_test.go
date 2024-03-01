@@ -18,6 +18,8 @@ func TestTimeUtil(t *testing.T) {
 		{currentDate, tu.Yesterday.Of, time.Date(2021, 12, 18, 20, 36, 30, 123456789, time.UTC)},
 		{currentDate, tu.BeginningOfDay.Of, time.Date(2021, 12, 19, 0, 0, 0, 0, time.UTC)},
 		{currentDate, tu.EndOfDay.Of, time.Date(2021, 12, 19, 23, 59, 59, 999999999, time.UTC)},
+		{currentDate, tu.BeginningOfWeek.Of, time.Date(2021, 12, 19, 0, 0, 0, 0, time.UTC)},
+		{currentDate, tu.EndOfWeek.Of, time.Date(2021, 12, 25, 23, 59, 59, 999999999, time.UTC)},
 		{currentDate, tu.BeginningOfMonth.Of, time.Date(2021, 12, 1, 0, 0, 0, 0, time.UTC)},
 		{currentDate, tu.EndOfMonth.Of, time.Date(2021, 12, 31, 23, 59, 59, 999999999, time.UTC)},
 		{currentDate, tu.BeginningOfYear.Of, time.Date(2021, 1, 1, 0, 0, 0, 0, time.UTC)},
