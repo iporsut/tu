@@ -25,6 +25,8 @@ tu.Tomorrow.Of(now)                           // 2021-12-20 20:36:30.123456789
 tu.Yesterday.Of(now)                          // 2021-12-18 20:36:30.123456789
 tu.BeginningOfDay.Of(now)                     // 2021-12-19 00:00:00
 tu.EndOfDay.Of(now)                           // 2021-12-19 23:59:59.999999999
+tu.BeginningOfWeek.Of(now)                    // 2021-12-19 00:00:00
+tu.EndOfWeek.Of(now)                          // 2021-12-25 23:59:59.999999999
 tu.BeginningOfMonth.Of(now)                   // 2021-12-01 00:00:00
 tu.EndOfMonth.Of(now)                         // 2021-12-31 23:59:59.999999999
 tu.BeginningOfYear.Of(now)                    // 2021-01-01 00:00:00
